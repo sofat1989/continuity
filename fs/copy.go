@@ -84,7 +84,7 @@ func copyDirectory(dst, src string, inodes map[uint64]string, o *copyDirOpts) er
 	}
 
 	if st, err := os.Stat(dst); err != nil {
-		if err := os.Mkdir(dst, stat.Mode()); err != nil {
+		if err := os.MkdirAll(dst, stat.Mode()); err != nil {
 			return errors.Wrapf(err, "failed to mkdir %s", dst)
 		}
 	} else if !st.IsDir() {
